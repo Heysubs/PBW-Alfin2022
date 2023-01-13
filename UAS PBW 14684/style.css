@@ -1,0 +1,1063 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap');
+*
+{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body
+{
+  position: relative;
+  min-height: 100vh;
+
+}
+
+.scroll-bar-wrapper {
+  z-index: 1000;
+  width: 100%;
+  height:10px;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#CCCCCC;
+}
+
+.scroll-bar { 
+  width:0;
+  height: inherit;
+  background: #000000;
+}
+
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 200; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+/* Slideshow container */
+.slideshow-container {
+  
+  position: relative;
+
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+.mySlides img{
+  filter: brightness(60%);
+  height: 800px;
+  object-fit: cover;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  background-color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 672px;
+  right: 30%;
+  width: 70px;
+  height: 90px;  
+  margin-top: -22px;
+  padding: 20px;
+  padding-left: 30px;
+  color: gray;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 3px 0px 0px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  margin-top: 43px;
+  right: 30%;
+  border-radius: 0px 0 0 3px;
+  
+}
+
+.destinasi{
+  display: flex;
+  
+  position: absolute;
+  height: 155px;
+  width: 30%;
+  background: #fff;
+  color: black;
+  right: 0;
+  top: 650px;
+  
+}
+
+.destinasi h1{
+  margin-top: 30px;
+  left: 20px;
+  font-weight: 600;
+  position: absolute;
+  font-size: 28px;
+}
+
+.destinasi p {
+  margin-top: 10px;
+  position: absolute;
+  left: 25px;
+  top: 50%;
+
+}
+
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 25%;
+  left: 150px;
+  width: 800px;
+  
+}
+
+.text p{
+  font-weight: 400;
+  font-size: 15px;
+  height: 1.4em;
+  color: white;
+  text-align: left;
+  text-decoration: none;
+  letter-spacing: 3px;
+  
+}
+
+.text h1{
+  margin-top: 30px;
+  font-weight: 600;
+  font-size: 70px;
+  height: 132px;
+  line-height: 75px;
+  word-spacing: 5px;
+  letter-spacing: -0.045em;
+  color: #fff;
+  
+}
+
+.text a {
+display: flex;
+font-weight: 400;
+font-size: 12px;
+text-align: center;
+letter-spacing: 3px;
+text-decoration: none;
+padding-top: 20px;
+justify-content: center;
+margin-top: 70px;
+height: 60px;
+width: 180px;
+color: black;
+background:#fff;
+border-radius: 6px;
+}
+
+.text a:hover{
+  background: black;
+  color: #fff;
+  transition: 0.5s;
+}
+
+
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.scrolling-active{
+  background-color: #fff;
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, .1);
+  transition: 1.5s;
+}
+
+
+.scrolling-active .logo{
+  color: #000;
+  transition: 1.5s;
+}
+
+.scrolling-active .nav_link{
+  color: #000;
+  transition: 0.3s;
+}
+
+.scrolling-active .nav_link:hover{
+  background: #000;
+  color: #fff;
+
+}
+
+.scrolling-active i{
+  color: #000;
+  transition: 1s;
+}
+
+header{
+  position: fixed;
+  z-index: 200;
+  padding: 30px 100px;
+  top: 0;
+  background: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+
+}
+
+
+.menu{
+height: 100%;
+transform: translateX(-80px);
+
+}
+
+header i{
+  font-size: 50px;
+  color: #fff;
+}
+
+
+
+
+header .logo{
+  margin-top: 5px;
+  transform: translateX(-380px);
+  left: 0;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li{
+  list-style: none;
+  margin-left: 20px;
+}
+
+header ul li a {
+  text-decoration: none;
+  padding: 6px 15px;
+  color: #fff;
+  border-radius: 20px;
+}
+
+
+header ul li a:hover{
+  background: #fff;
+  color: black;
+  transition: 0.3s;
+}
+
+#gallery{
+position: relative;
+width: 100%;
+height: 1094px;
+
+background: #FFFFFF;
+}
+
+#gallery .gallery_title{
+  position: absolute;
+  top: 100px;
+  margin-left: 130px;
+}
+
+.gallery_title .gallery_p{
+  /* KOST.IN BOARDING HOUSES */
+
+position: absolute;
+width: 303px;
+height: 22px;
+margin-left: 520px;
+top: 54px;
+
+font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 22px;
+/* identical to box height, or 100% */
+
+color: #000000;
+}
+
+.gallery_title .gallery_h1{
+  /* Close to school */
+
+position: absolute;
+width: 463px;
+height: 22px;
+margin-left: 420px;
+top: 119px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 60px;
+line-height: 22px;
+/* identical to box height, or 37% */
+text-align: center;
+
+color: #000000;
+
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  margin-top: 200px;
+  float: left;
+  width: 33.33%;
+
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+.carousel {
+  
+  transform:translateY(300px);
+
+  margin-left: 120px;
+  overflow: hidden;
+  text-align: center;
+  
+}
+
+.slides {
+  display: flex;
+}
+
+
+
+
+.slides-item {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 100px;
+  height: 500px;
+  justify-content: center;
+  margin: 0 1rem;
+  position: relative;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform .5s;
+  width: 400px;
+}
+
+.carousel__nav {
+  padding: 1.25rem .5rem;
+}
+
+.slider-nav {
+  align-items: center;
+  background-color: #ddd;
+  border-radius: 50%;
+  color: #000;
+  display: inline-flex;
+  height: 1.5rem;
+  justify-content: center;
+  padding: .5rem;
+  position: relative;
+  text-decoration: none;
+  width: 1.5rem;
+}
+
+.slider-nav:hover,
+.slider-nav:active {
+  background-color: #000;
+  color: #fff;
+}
+
+.slides a{
+  text-decoration: none;
+}
+
+.slide-1 {
+  background-image: url("images/foto kost 1.jpeg");
+ 
+
+  filter: brightness(80%);
+
+ 
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+
+}
+
+.slide-1:hover{
+  filter: brightness(100%);
+  transition: all 0.5s;
+}
+
+.slides h1{
+  font-size: 60px;
+transform: translateY(170px);
+z-index:200 ;
+color: #fff;
+
+}
+
+
+.slide-2 {
+  background-image: url("images/foto kost 2.jpeg");
+ 
+
+  filter: brightness(80%);
+
+ 
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+
+}
+
+.slide-2:hover{
+  filter: brightness(100%);
+  transition: all 0.5s;
+}
+
+.slide-3 {
+  background-image: url("images/foto kos 3.jpeg");
+ 
+
+  filter: brightness(80%);
+
+ 
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+
+}
+
+.slide-3:hover{
+  filter: brightness(100%);
+  transition: all 0.5s;
+}
+
+.slide-4 {
+  background-image: url("images/foto kos 3.jpeg");
+ 
+
+  filter: brightness(80%);
+
+ 
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+
+}
+
+.slide-3:hover{
+  filter: brightness(100%);
+  transition: all 0.5s;
+}
+
+
+.slides {
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.slides-item {
+  scroll-snap-align: start;
+}
+
+
+.slides {
+  scrollbar-width: none;
+}
+
+.slides::-webkit-scrollbar {
+  display: none;
+}
+
+
+.section3{
+
+transform: translateY(-100px);
+
+height: 900px;
+
+background: #FFFFFF;
+}
+
+.choose_kost{
+
+position: relative;
+width: 100%;
+height: 800px;
+background:#e6e6e6 ;
+}
+
+.choose_kost .text_group{
+  position: absolute;
+width: 517px;
+height: 484px;
+left: 110px;
+top: 145px;
+}
+.text_group p{
+font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 22px;
+/* identical to box height, or 100% */
+
+color: #000000;
+}
+
+.text_group h1{
+  margin-top: 48px;
+  font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 68px;
+line-height: 80px;
+/* or 88% */
+letter-spacing: -0.045em;
+
+color: #1B1717;
+}
+
+.text_group .text_kost{
+  margin-top: 48px;
+  font-family: poppins, sans-serif;
+  font-size: 20px
+}
+
+.text_group a{
+
+  margin-top: 48px;
+  position: absolute;
+width: 322px;
+height: 54px;
+left: 3px;
+top: 424px;
+color: #fff;
+text-decoration: none;
+text-align: center;
+padding-top: 16px;
+background: #000000;
+border-radius: 5px;
+font-size: 14px
+}
+
+.text_group a:hover{
+  background: #fff;
+  color: #000000;
+  transition: all 0.5s;
+}
+
+.choose_kost .img_kost{
+
+position: absolute;
+width: 540px;
+height: 440px;
+left: 900px;
+top: 132px;
+
+background: #FFFFFF;
+border-radius: 10px;
+}
+
+.img_kost img{
+ display: flex;
+ margin: 0 auto;
+ top: 50px;
+ position: relative;
+  border-radius: 10px;
+  width: 463px;
+height: 363px;
+}
+
+.section4{
+  position: relative;
+  transform: translateY(-100px);
+  height: 1800px;
+
+background: #F5F5F5;
+}
+
+.section4 img{
+
+position: absolute;
+width: 100%;
+
+object-fit: cover;
+filter: brightness(60%);
+}
+
+.section4 #kost_desc{
+position: relative;
+  font-size: 8px;
+  top: 200px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  
+  color: #FFFFFF;
+}
+
+.section4 #popular_kost{
+  position: absolute;
+
+height: 1400px;
+margin-left: 120px;   
+top: 700px;
+width: 85%;
+background: #fff;
+border-radius: 20px;
+}
+
+#popular_kost h1{
+  margin-top: 22px;
+  text-align: center;
+  font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 36px;
+line-height: 54px;
+/* identical to box height */
+text-align: center;
+}
+
+#popular_kost .card_kost{
+margin-top: 54px;
+position: relative;
+width: 329px;
+height: 456px;
+display: inline-flex;
+top: 33px;
+left: 80px;
+margin-right: 86px;
+background: #FFFFFF;
+border: 2px solid rgba(0, 0, 0, 0.11);
+border-radius: 10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.card_kost img{
+  position: absolute;
+  width: 274px;
+  height: 202px;
+  left: 27px;
+  top: 26px;
+  filter: brightness(100%);
+
+  border-radius: 10px; 
+}
+
+.card_kost .kost_title{
+  position: absolute;
+  width: 248px;
+  height: 36px;
+  left: 27px;
+  top: 256px;
+  
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height */
+  
+  
+}
+
+.card_kost .detailkost_desc{
+  position: absolute;
+  width: 274px;
+  height: 60px;
+  left: 27px;
+  top: 301px;
+  
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 123.02%;
+  /* or 15px */
+  letter-spacing: 0.06em;
+  
+
+}
+
+.card_kost .detail_price{
+  position: absolute;
+width: 86px;
+height: 28px;
+left: 216px;
+top: 400px;
+color: #fff;
+text-align: center;
+padding-top: 8px;
+font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 123.02%;
+background: #000000;
+border-radius: 5px;
+text-decoration: none;
+}
+
+.detail_price:hover{
+  background: #fff;
+  color: #000;
+  transition: all 0.3s;
+}
+
+.card_kost .price{
+  position: absolute;
+
+height: 11px;
+left: 27px;
+top: 400px;
+
+font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 123.02%;
+/* identical to box height, or 11px */
+}
+
+.section5{
+position: relative;
+background: #000000;
+height: 700px;
+overflow-y: hidden;
+}
+
+
+
+.section5 .footer_date{
+  position: absolute;
+width: 90%;
+height: 350px;
+left: 80px;
+top: 100px;
+
+background: #FFFFFF;
+border-radius: 30px;
+}
+
+.footer_date .line1{
+  position: absolute;
+width: 366.6px;
+height: 0px;
+left: 88px;
+top: 175px;
+
+border: 5px solid #000000;
+}
+
+.footer_date .line2{
+  position: absolute;
+width: 366.6px;
+height: 0px;
+left: 800px;
+top: 175px;
+
+border: 5px solid #000000;
+}
+
+.footer_date h1{
+  position: absolute;
+
+left: 89px;
+top: 178px;
+
+font-family: Inter;
+font-style: normal;
+font-weight: 600;
+font-size: 48px;
+line-height: 64px;
+/* identical to box height */
+
+color: #000000;
+
+}
+
+.footer_date .h2{
+
+position: absolute;
+width: 420px;
+height: 72px;
+left: 800px;
+top: 175px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+
+color: #000000;
+}
+
+.section5 .footer{
+  position: absolute;
+width: 100%;
+height: 291px;
+left: 0px;
+top: 500px;
+}
+
+.footer h1{
+  position: absolute;
+width: 295px;
+height: 72px;
+left: 155px;
+top: 0px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+}
+
+.footer a{
+
+position: absolute;
+width: 243px;
+height: 72px;
+left: 155px;
+top: 84px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 36px;
+text-decoration: none;
+color: #FFFFFF;
+}
+
+.footer .email2{
+  margin-top: 40px;
+}
+
+.footer .social_media_heading{
+
+position: absolute;
+width: 415px;
+height: 72px;
+left: 880px;
+top: 0px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 48px;
+line-height: 72px;
+/* identical to box height */
+
+color: #FFFFFF;
+}
+
+.email3, .email4{
+  position: absolute;
+width: 129px;
+height: 108px;
+margin-left: 730px;
+top: 66px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 36px;
+
+color: #FFFFFF;
+}
+
+.email4{
+  margin-top: 40px;
+}
+
+.footer ul{
+  position: absolute;
+width: 415px;
+height: 85px;
+left: 35%;
+top: 206px;
+display: flex;
+justify-content: center;
+align-items: center;
+background: #F8F8F8;
+border-radius: 40px;
+}
+
+
+.footer ul li a:hover,
+.footer ul li a.active{
+  background: #000;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.footer ul li{
+  position: relative;
+width: 120px;
+height: 66px;
+margin-right: 10px;
+list-style: none;
+  align-items: center;
+background: #fff;
+border-radius: 40px;
+}
+
+.footer ul li a{
+  border-radius: 40px;
+
+  width: 120px;
+  height: 66px;
+  left: 0px;
+  top: 0px;
+  padding-top: 15px;
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 36px;
+/* identical to box height */
+text-align: center;
+color: #000;
+text-decoration: none;
+}
+

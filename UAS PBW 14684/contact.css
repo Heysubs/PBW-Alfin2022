@@ -1,0 +1,500 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap');
+*
+{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'poppins', sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body
+{
+  position: relative;
+  min-height: 100vh;
+
+}
+
+.scroll-bar-wrapper {
+  z-index: 1000;
+  width: 100%;
+  height:10px;
+  position:fixed;
+  top:0;
+  left:0;
+  background:#CCCCCC;
+}
+
+.scroll-bar { 
+  width:0;
+  height: inherit;
+  background: #000000;
+}
+
+
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+  height: 100%;
+  width: 0;
+  position: fixed; /* Stay in place */
+  z-index: 200; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 25%; /* 25% from the top */
+  width: 100%; /* 100% width */
+  text-align: center; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.scrolling-active{
+  background-color: #fff;
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, .1);
+  transition: 1.5s;
+}
+
+
+.scrolling-active .logo{
+  color: #000;
+  transition: 1.5s;
+}
+
+.scrolling-active .nav_link{
+  color: #000;
+  transition: 0.3s;
+}
+
+.scrolling-active .nav_link:hover{
+  background: #000;
+  color: #fff;
+
+}
+
+.scrolling-active i{
+  color: #000;
+  transition: 1s;
+}
+
+header{
+  position: fixed;
+  z-index: 200;
+  padding: 30px 100px;
+  top: 0;
+  background: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  
+
+}
+
+
+.menu{
+height: 100%;
+transform: translateX(-80px);
+
+}
+
+header i{
+  font-size: 50px;
+  color: #fff;
+}
+
+
+
+header .logo{
+  margin-top: 5px;
+  transform: translateX(-480px);
+  left: 0;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li{
+  list-style: none;
+  margin-left: 20px;
+}
+
+header ul li a {
+  text-decoration: none;
+  padding: 6px 15px;
+  color: #fff;
+  border-radius: 20px;
+}
+
+
+header ul li a:hover{
+  background: #fff;
+  color: black;
+  transition: 0.3s;
+}
+
+.section1{
+  position: relative;
+  height: 1800px;
+}
+
+.section1 img{
+  width: 100%;
+height: 900px;
+filter: brightness(60%);
+}
+
+.section1 .form_title{
+  position: absolute;
+width: 1315px;
+height: 222px;
+left: 111px;
+top: 436px;
+}
+
+.form_title p{
+  font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 26px;
+line-height: 31px;
+text-align: center;
+letter-spacing: 0.1em;
+margin-bottom: 50px;
+color: #FFFFFF;
+
+}
+
+.form_title h1{
+  font-family: Poppins;
+font-style: normal;
+font-weight: bold;
+font-size: 88px;
+line-height: 22px;
+/* identical to box height, or 25% */
+
+text-align: center;
+
+color: #FFFFFF;
+}
+
+.section1 .form_container{
+  position: absolute;
+width: 1209px;
+height: 993px;
+left: 111px;
+top: 807px;
+margin-left: 50px;
+background: #FFFFFF;
+border-radius: 30px;
+}
+
+.form_container .form1{
+  position: absolute;
+width: 602px;
+height: 719px;
+left: 330px;
+top: 91px;
+
+background:#e4e4e4 ;
+border-radius: 20px;
+}
+
+.form1 form .user-details{
+  margin-top: 38px;
+  display: block;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 50px;
+
+}
+
+form .user-details .input-box{
+  width: calc(100%/ 2 - 20px);
+  margin-bottom: 55px;
+}
+
+.user-details .input-box input{
+  padding-left: 10px;
+  width: 342px;
+  height: 41px;
+background: #FFFFFF;
+border-radius: 5px;
+border-color: #fff;
+border: none;
+
+}
+
+.input-box input[type=submit]{
+  position: absolute;
+width: 342px;
+height: 41px;
+
+font-family: Inter;
+font-style: normal;
+font-weight: 600;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+background: #000000;
+border-radius: 10px;
+}
+
+.input-box .details{
+font-family: Inter;
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+}
+
+.input-box button[type=submit]{
+  position: absolute;
+  left: 48px;
+  width: 342px;
+  height: 41px;
+  margin-top: 100px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height */
+  text-align: center;
+  
+  color: #FFFFFF;
+  background: #000000;
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.section5{
+  position: relative;
+  background: #000000;
+  height: 700px;
+  overflow-y: hidden;
+  }
+  
+  
+  
+  .section5 .footer_date{
+    position: absolute;
+  width: 90%;
+  height: 350px;
+  left: 80px;
+  top: 100px;
+  
+  background: #FFFFFF;
+  border-radius: 30px;
+  }
+  
+  .footer_date .line1{
+    position: absolute;
+  width: 366.6px;
+  height: 0px;
+  left: 88px;
+  top: 175px;
+  
+  border: 5px solid #000000;
+  }
+  
+  .footer_date .line2{
+    position: absolute;
+  width: 366.6px;
+  height: 0px;
+  left: 800px;
+  top: 175px;
+  
+  border: 5px solid #000000;
+  }
+  
+  .footer_date h1{
+    position: absolute;
+  
+  left: 89px;
+  top: 178px;
+  
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 64px;
+  /* identical to box height */
+  
+  color: #000000;
+  
+  }
+  
+  .footer_date .h2{
+  
+  position: absolute;
+  width: 420px;
+  height: 72px;
+  left: 800px;
+  top: 175px;
+  
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 72px;
+  /* identical to box height */
+  
+  color: #000000;
+  }
+  
+  .section5 .footer{
+    position: absolute;
+  width: 100%;
+  height: 291px;
+  left: 0px;
+  top: 500px;
+  }
+  
+  .footer h1{
+    position: absolute;
+  width: 295px;
+  height: 72px;
+  left: 155px;
+  top: 0px;
+  
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 72px;
+  /* identical to box height */
+  
+  color: #FFFFFF;
+  
+  }
+  
+  .footer a{
+  
+  position: absolute;
+  width: 243px;
+  height: 72px;
+  left: 155px;
+  top: 84px;
+  
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  text-decoration: none;
+  color: #FFFFFF;
+  }
+  
+  .footer .email2{
+    margin-top: 40px;
+  }
+  
+  .footer .social_media_heading{
+  
+  position: absolute;
+  width: 415px;
+  height: 72px;
+  left: 880px;
+  top: 0px;
+  
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 72px;
+  /* identical to box height */
+  
+  color: #FFFFFF;
+  }
+  
+  .email3, .email4{
+    position: absolute;
+  width: 129px;
+  height: 108px;
+  margin-left: 730px;
+  top: 66px;
+  
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  
+  color: #FFFFFF;
+  }
+  
+  .email4{
+    margin-top: 40px;
+  }
+  
+  
